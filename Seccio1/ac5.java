@@ -5,21 +5,23 @@ import java.io.File;
 public class ac5 {
 
 	public static void main(String[] args) {
-		File f = new File(args[0]);
-		String exten = "txt";
-		
-		
-		String[] directorio = f.list();
+
+		// Variables
+		String rutaDirecotri = args[0];
+		String extensio = args[1];
+
+		// Codi
+		File f = new File(rutaDirecotri);
+
+		FiltroExtension filtro = new FiltroExtension(extensio);
+
+		String[] directorio = f.list(filtro);
 
 		System.out.println("Contingut del ficher: ");
-		for (String contingut : directorio) {
-			String[] parts = contingut.split(".");
-			
-			if(parts[1].equals("txt")) {
-				System.out.println(contingut);
-			}
+		for (int i = 0; i < directorio.length; i++) {
+			System.out.println(directorio[i]);
 		}
-		
+
 	}
 
 }
