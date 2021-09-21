@@ -29,9 +29,18 @@ public class claseFile {
 
 			// Espall total, disponible i utilitzat
 			System.out.println();
-			System.out.println("Espall total = " + f.getTotalSpace());
-			System.out.println("Espall buit = " + f.getFreeSpace());
-			System.out.println("Espall utilitzat = " + f.getUsableSpace() + "\n");
+			
+			Long total = f.getTotalSpace() / 1024;
+			total = total / 1024;
+			total = total / 1024;
+			
+			Long lliure = f.getFreeSpace() / 1024;
+			lliure = lliure / 1024;
+			lliure = lliure / 1024;
+			
+			System.out.println("Espall total = " + total + " G");
+			System.out.println("Espall lliure = " + lliure + " G");
+			System.out.println("Espall utilitzat = " + (total - lliure) + " G \n");
 
 		} else {
 			System.out.println("Es un fitxer");
