@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class claseFile {
 
-	// Dona informació sobre un directori o una carpeta
+	// Dona informaciÃ³ sobre un directori o una carpeta
 	// Rep com a parametre d'entrada un String amb la rutaabsoluta del
 	// directori/fitxer
 	public static void getInformacio(String ruta) {
@@ -27,7 +27,7 @@ public class claseFile {
 				System.out.println(file);
 			}
 
-			// Espall total, disponible i utilitzat
+			// Espall total, disponible i utilitzat, mostrem el resultat en Gigues
 			System.out.println();
 			
 			Long total = f.getTotalSpace() / 1024;
@@ -52,7 +52,7 @@ public class claseFile {
 		// Ruta absoluta
 		System.out.println("La ruta absoluta es: " + f.getAbsolutePath());
 
-		// Ultima Modificació en format de Data
+		// Ultima ModificaciÃ³ en format de Data
 		long ultimaMod = f.lastModified();
 
 		String formatData = "yyyy-MM-dd hh:mm aa";
@@ -60,7 +60,7 @@ public class claseFile {
 
 		Date ultimaModData = new Date(ultimaMod);
 
-		System.out.println("Ultima modificació: " + format.format(ultimaModData));
+		System.out.println("Ultima modificaciÃ³: " + format.format(ultimaModData));
 
 		// Carpeta/Fitxer ocult/a
 		System.out.println((f.isHidden()) ? "Es oculta" : "No es oculta");
@@ -113,11 +113,11 @@ public class claseFile {
 
 		// Menu
 		System.out.println("Menu:");
-		System.out.println("1 -> getInformació \n2 -> crearCarpeta \n3 -> crearFitxer \n4 -> elimina \n5 -> renomena");
+		System.out.println("1 -> getInformaciÃ³ \n2 -> crearCarpeta \n3 -> crearFitxer \n4 -> elimina \n5 -> renomena");
 		System.out.println("Tria una opcio: ");
 		String selec = sc.nextLine();
 
-		// Switch per a accedir a cada punt del menú, cridant a cada mètode.
+		// Switch per a accedir a cada punt del menÃº, cridant a cada mÃ¨tode.
 		switch (Integer.parseInt(selec)) {
 		case 1:
 			getInformacio(ubicacioDirectorio);
