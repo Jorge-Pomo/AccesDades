@@ -9,7 +9,6 @@ import java.io.IOException;
 public class act14 {
 
 	public static void main(String[] args) {
-		System.out.println(args[0]);
 		String fitxer = args[0] + System.getProperty("file.separator") + "Text.txt";
 		String fCopia = args[0] + System.getProperty("file.separator") + "Copia.txt";
 		
@@ -25,7 +24,6 @@ public class act14 {
 			br.close();
 			bw.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
