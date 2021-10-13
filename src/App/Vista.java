@@ -72,6 +72,7 @@ public class Vista {
 		this.frame.setVisible(true);
 	}
 	
+	// Metodos qeue retornen un element JFrame 
 	public JButton getBtnBuscar() {
 		return btnBuscar;
 	}

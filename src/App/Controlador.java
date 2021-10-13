@@ -20,6 +20,11 @@ public class Controlador {
 		initEventHandlers();
 	}
 
+	// initEventHandlers()
+	// Inicializamos mostrar el text en pantalla,
+	// y els botns:
+	//		getBtnBuscar()
+	// 		getBtnRemplazar()
 	public void initEventHandlers() {
 		// Mostrar Text original
 		v.getTextAreaOriginal().setText(m.imprimirTexto());
@@ -47,6 +52,10 @@ public class Controlador {
 
 	}
 
+	// buscarContarPalabra(String, String)
+	// Metodo que busca i conta paraules en un text
+	// Rep com a parametre d'entrada dos Strings, uno amb el txt sobre el que anem a buscar la paraula i un altre amb la paraula a buscar.
+	// Te com a parametre d'eixida un int amb el comptador de paraules trobades iguals a la buscada.
 	private int buscarContarPalabra(String texto, String palabra) {
 		int cont = 0;
 
@@ -72,6 +81,10 @@ public class Controlador {
 		return cont;
 	}
 
+	// remplaçarParaula(String, String)
+	// Metodo que busca en el text una paraula y la remplaça per una que indique lúsuari
+	// Rep com a parametres d'entrada el text y la paraula a remplaçar
+	// Te com a parametre d'eixida el text modificat amb les paraules ja remplaçades
 	private String remplaçarParaula(String texto, String paraulaRemplaçar) {
 		String paraulaBuscada = v.getTextFieldBuscar().getText();
 

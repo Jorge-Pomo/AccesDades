@@ -23,7 +23,9 @@ public class Model {
 				+ "AE02_T1_2_Streams_Groucho_nuevoFichero.txt";
 	}
 
-	// Imprimix text
+	// imprimirTexto()
+	// Metodo que retorna el text original ubicat al pc.
+	// No te parametres d'entrada
 	public String imprimirTexto() {
 		String text = "";
 
@@ -41,7 +43,9 @@ public class Model {
 		return text;
 	}
 
-	// Guardar text
+	// guardarTexto(String)
+	// Metodo que guarda un String en un ficher al PC
+	// Te com a parametres d'entrada un String.
 	public void guardarTexto(String textGuardar) {
 		try {
 
