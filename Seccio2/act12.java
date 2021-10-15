@@ -17,7 +17,6 @@ public class act12 {
 				System.out.println(linea);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
