@@ -65,7 +65,7 @@ public class Animal {
 	// Metodos
 	@Override
 	public String toString() {
-		return "Animal [id=" + id + ", nombre=" + nombre + ", tipo=" + tipo + ", color=" + color + ", edad=" + edad
+		return "\nAnimal: [id = " + id + ", nombre = " + nombre + ", tipo = " + tipo + ", color = " + color + ", edad = " + edad
 				+ "]";
 	}
 }

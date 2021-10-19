@@ -18,6 +18,12 @@ public class act23 {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Animal> animals = new ArrayList();
 
+		int id = 0;
+		String nom = "";
+		String tipo = "";
+		String color = "";
+		int edad = 0;
+		
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -33,15 +39,15 @@ public class act23 {
 					System.out.println("ID animal : " + eElement.getAttribute("id"));
 					System.out.println("Nombre : " + eElement.getElementsByTagName("nombre").item(0).getTextContent());
 					System.out.println("Tipo : " + eElement.getElementsByTagName("tipo").item(0).getTextContent());
-					System.out.println("Color : " + eElement.getElementsByTagName("tipo").item(0).getTextContent());
+					System.out.println("Color : " + eElement.getElementsByTagName("color").item(0).getTextContent());
 					System.out.println("Edad : " + eElement.getElementsByTagName("edad").item(0).getTextContent());
 
 					// Crear objectes
-					int id = Integer.parseInt(eElement.getAttribute("id"));
-					String nom = eElement.getElementsByTagName("nombre").item(0).getTextContent();
-					String tipo = eElement.getElementsByTagName("tipo").item(0).getTextContent();
-					String color = eElement.getElementsByTagName("tipo").item(0).getTextContent();
-					int edad = Integer.parseInt(eElement.getElementsByTagName("edad").item(0).getTextContent());
+					id = Integer.parseInt(eElement.getAttribute("id"));
+					nom = eElement.getElementsByTagName("nombre").item(0).getTextContent();
+					tipo = eElement.getElementsByTagName("tipo").item(0).getTextContent();
+					color = eElement.getElementsByTagName("color").item(0).getTextContent();
+					edad = Integer.parseInt(eElement.getElementsByTagName("edad").item(0).getTextContent());
 
 					animals.add(new Animal(id, nom, tipo, color, edad));
 				}
@@ -50,10 +56,26 @@ public class act23 {
 			e.printStackTrace();
 		}
 		
-		System.out.println("Anem a crear un objecte animal:");
-		System.out.println("Dime el nom del animal");
-		String nom = sc.nextLine();
-		System.out.println();
+		// Plenem els atributs
+		System.out.println("\nNou animal");
+		System.out.print("Nom del animal: ");
+		nom = sc.nextLine();
+		System.out.print("Tipo de animal: ");
+		tipo = sc.nextLine();
+		System.out.print("Color del animal: ");
+		color = sc.nextLine();
+		System.out.print("Edad del animal: ");
+		edad = sc.nextInt();
+		
+		id = animals.size() + 1;
+		
+		// Afegim en la llista
+		animals.add(new Animal(id, nom, tipo, color, edad));
+		
+		for (int i = 0; i < animals.size(); i++) {
+			System.out.println(animals.get(i));
+		}
+		
 
 	}
 

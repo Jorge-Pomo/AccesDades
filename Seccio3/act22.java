@@ -32,19 +32,24 @@ public class act22 {
 					System.out.println("ID animal : " + eElement.getAttribute("id"));
 					System.out.println("Nombre : " + eElement.getElementsByTagName("nombre").item(0).getTextContent());
 					System.out.println("Tipo : " + eElement.getElementsByTagName("tipo").item(0).getTextContent());
-					System.out.println("Color : " + eElement.getElementsByTagName("tipo").item(0).getTextContent());
+					System.out.println("Color : " + eElement.getElementsByTagName("color").item(0).getTextContent());
 					System.out.println("Edad : " + eElement.getElementsByTagName("edad").item(0).getTextContent());
 
 					// Crear objectes
 					int id = Integer.parseInt(eElement.getAttribute("id"));
 					String nom = eElement.getElementsByTagName("nombre").item(0).getTextContent();
 					String tipo = eElement.getElementsByTagName("tipo").item(0).getTextContent();
-					String color = eElement.getElementsByTagName("tipo").item(0).getTextContent();
+					String color = eElement.getElementsByTagName("color").item(0).getTextContent();
 					int edad = Integer.parseInt(eElement.getElementsByTagName("edad").item(0).getTextContent());
 
 					animals.add(new Animal(id, nom, tipo, color, edad));
 				}
 			}
+			
+//			for (int i = 0; i < animals.size(); i++) {
+//				System.out.println(animals.get(i));
+//			}
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
