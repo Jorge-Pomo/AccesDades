@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<biblioteca>
+	<llibre id="1">
+		<titol>La Cabra</titol>
+		<autor>Jorge</autor>
+		<anyPubli>2021</anyPubli>
+		<editorial>Xuqer</editorial>
+		<numPagines>322</numPagines>
+	</llibre>
+	<llibre id="2">
+		<titol>Mi casa</titol>
+		<autor>Adrian</autor>
+		<anyPubli>2017</anyPubli>
+		<editorial>PoblaLP</editorial>
+		<numPagines>108</numPagines>
+	</llibre>
+	<llibre id="3">
+		<titol>Roma</titol>
+		<autor>JhonR</autor>
+		<anyPubli>1999</anyPubli>
+		<editorial>ItalianW</editorial>
+		<numPagines>456</numPagines>
+	</llibre>
+	<llibre id="4">
+		<titol>ADROMICFMS</titol>
+		<autor>Young</autor>
+		<anyPubli>2015</anyPubli>
+		<editorial>YBRecords</editorial>
+		<numPagines>245</numPagines>
+	</llibre>
+	<llibre id="5">
+		<titol>CasaCarol</titol>
+		<autor>Carolina</autor>
+		<anyPubli>1989</anyPubli>
+		<editorial>LletraPetita</editorial>
+		<numPagines>579</numPagines>
+	</llibre>
+</biblioteca>
