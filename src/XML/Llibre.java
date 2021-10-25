@@ -72,8 +72,8 @@ public class Llibre {
 		this.numPagines = numPagines;
 	}
 	
-	// Metodos
 	@Override
+	// Metodos
 	public String toString() {
 		return "Llibre [identificador = " + identificador + ", titol = " + titol + ", autor = " + autor + ", anyPubli = "
 				+ anyPubli + ", editorial = " + editorial + ", numPagines = " + numPagines + "]";
