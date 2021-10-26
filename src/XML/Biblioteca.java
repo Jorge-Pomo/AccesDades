@@ -30,7 +30,10 @@ public class Biblioteca {
 	private static ArrayList<Llibre> biblio = new ArrayList();
 	static Scanner sc = new Scanner(System.in);
 
-	// Metodos act
+	// crearLlibre(Llibre)
+	// Parametres d'entrada: objecte Llibre
+	// Parametres d'ixida: int amb el codig d'exit o error
+	// Crea un arxiu xml on es mostraran tots els llibres que estan en la biblioteca, amb els seus atributs
 	public static int crearLlibre(Llibre llibre) {
 		int resu = 0;
 
@@ -100,10 +103,17 @@ public class Biblioteca {
 		return resu;
 	}
 
+	// recuperarLlibre(int)
+	// Parametres d'entrada: int amb l'id del llibre
+	// Parametres d'ixida: retorna un llibre concret a partir del seu ID
 	public static Llibre recuperarLlibre(int id) {
 		return biblio.get(id);
 	}
 
+	// mostrarLlibre(Llibre)
+	// Parametres d'entrada: un objecte Llibre
+	// Parametres d'ixida: no en te
+	// mostra tots els atributs del llibre
 	public static void mostrarLlibre(Llibre llibre) {
 		System.out.println("Els atributs del llibre son: ");
 		System.out.println("Titol " + llibre.getTitol());
@@ -113,6 +123,10 @@ public class Biblioteca {
 		System.out.println("Numero de pagines " + llibre.getNumPagines());
 	}
 
+	// borrarLlibre(int)
+	// Parametres d'enterada: un int amb el id del llibre
+	// Parametyres d'eixida: no en te
+	// Borra un llibre de la biblioteca i del XML
 	public static void borrarLlibre(int id) {
 		biblio.remove(id);
 		System.out.println("El libro se ha borrado de la biblioteca.");
@@ -124,6 +138,10 @@ public class Biblioteca {
 		crearLlibre(biblio.get(id - 1));
 	}
 
+	// actualitzaLLibre(int)
+	// Parametres d'entrada: int amb l'ID del llibre
+	// Parametres d'ixida: no en te
+	// Actualitza al xml l'informació d'un llibre
 	public static void actualitzaLlibre(int id) {
 		int opc = 0;
 
@@ -165,12 +183,16 @@ public class Biblioteca {
 
 		} while (opc != 6);
 
-		System.out.println(recuperarLlibre(id).toString());
+		mostrarLlibre(recuperarLlibre(id));
 
 		crearLlibre(recuperarLlibre(id));
 
 	}
 
+	// recuperarTots()
+	// Parametres d'entrada: no en te
+	// Parametre d'ixida: Un arrayList
+	// Retorna un arrayList amb tots els llibres
 	public static ArrayList<Llibre> recuperarTots() {
 		ArrayList<Llibre> llibresBiblio = biblio;
 
@@ -178,6 +200,10 @@ public class Biblioteca {
 	}
 
 	// Metodos meus
+	// plenarBiblio(String)
+	// Parametres d'entrada: String amb la ruta del arxiu XML
+	// Parametres d'ixida: un arrayList
+	// Retorna un arrayList amb els llibres que estan en l'arxiu XML
 	public static ArrayList<Llibre> plenarLlistaBiblio(String ruta) {
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -238,7 +264,7 @@ public class Biblioteca {
 			case 2:
 				System.out.println("Dime el id del libro: ");
 				id = Integer.parseInt(sc.nextLine()) - 1;
-				System.out.println(plenarBiblio.get(id).toString());
+				mostrarLlibre(plenarBiblio.get(id));
 				break;
 			case 3:
 				Llibre nouLlibre = new Llibre();
