@@ -29,17 +29,17 @@
         <numPagines>245</numPagines>
     </llibre>
     <llibre id="5">
-        <titol>CasaCarol</titol>
+        <titol>CasaJorge</titol>
         <autor>Carolina</autor>
         <anyPubli>1989</anyPubli>
         <editorial>LletraPetita</editorial>
-        <numPagines>579</numPagines>
+        <numPagines>300</numPagines>
     </llibre>
     <llibre id="6">
-        <titol>CasaCa</titol>
-        <autor>Jorge</autor>
-        <anyPubli>1992</anyPubli>
-        <editorial>Xuqer</editorial>
-        <numPagines>192</numPagines>
+        <titol>ASSdd</titol>
+        <autor>JorgePomo</autor>
+        <anyPubli>2021</anyPubli>
+        <editorial>XuqerSL</editorial>
+        <numPagines>345</numPagines>
     </llibre>
 </biblioteca>
