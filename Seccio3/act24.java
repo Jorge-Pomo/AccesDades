@@ -7,6 +7,7 @@ import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -79,6 +80,7 @@ public class act24 {
 																												// del
 																												// archivo
 			Transformer transformer = TransformerFactory.newInstance().newTransformer();
+			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 			transformer.transform(source, result);
 		} catch (ParserConfigurationException | TransformerException | TransformerFactoryConfigurationError e) {
 			// TODO Auto-generated catch block

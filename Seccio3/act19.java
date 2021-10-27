@@ -28,7 +28,7 @@ public class act19 {
 				System.out.println("");
 				if (node.getNodeType() == Node.ELEMENT_NODE) {
 					Element eElement = (Element) node;
-					System.out.println("ID animal : " + eElement.getAttribute("id"));
+					System.out.println("Nom node : " + node.getNodeName());
 					// System.out.println("Nombre : " +
 					// eElement.getElementsByTagName("nombre").item(0).getTextContent());
 					// System.out
