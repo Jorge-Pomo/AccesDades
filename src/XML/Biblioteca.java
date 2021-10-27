@@ -25,6 +25,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
+import com.sun.jdi.event.MonitorWaitedEvent;
+
 public class Biblioteca {
 
 	private static ArrayList<Llibre> biblio = new ArrayList();
@@ -33,7 +35,8 @@ public class Biblioteca {
 	// crearLlibre(Llibre)
 	// Parametres d'entrada: objecte Llibre
 	// Parametres d'ixida: int amb el codig d'exit o error
-	// Crea un arxiu xml on es mostraran tots els llibres que estan en la biblioteca, amb els seus atributs
+	// Crea un arxiu xml on es mostraran tots els llibres que estan en la
+	// biblioteca, amb els seus atributs
 	public static int crearLlibre(Llibre llibre) {
 		int resu = 0;
 
@@ -257,7 +260,8 @@ public class Biblioteca {
 			switch (Integer.parseInt(seleccioMenu)) {
 			case 1:
 				for (int i = 0; i < plenarBiblio.size(); i++) {
-					System.out.println(plenarBiblio.get(i).getTitol());
+					System.out.println("ID: " + plenarBiblio.get(i).getIdentificador() + "  Titol: "
+							+ plenarBiblio.get(i).getTitol());
 				}
 				break;
 
