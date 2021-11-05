@@ -11,9 +11,9 @@ public class act30 {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		
+
 		int cont = 0;
-		
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost/selva", "root", "");
@@ -32,16 +32,16 @@ public class act30 {
 			} else {
 				System.err.println("\nError en la conexió!!!");
 			}
-			
+
 			System.out.println("\nQue ID quieres actualizar? ");
 			int id = Integer.parseInt(sc.nextLine());
-			
+
 			int opc = 0;
 			String nombre = "";
 			String tipo = "";
 			String color = "";
 			int edad = 0;
-			
+
 			do {
 				System.out.println("\n--------Menu--------");
 				System.out.println("1.- Actualizar nombre: ");
@@ -50,7 +50,7 @@ public class act30 {
 				System.out.println("4.- Actualizar edad: ");
 				System.out.println("5.- Salir del menu");
 				opc = Integer.parseInt(sc.nextLine());
-				
+
 				switch (opc) {
 				case 1:
 					System.out.println("Dime el nuevo nombre: ");
@@ -72,13 +72,12 @@ public class act30 {
 				case 5:
 					break;
 				}
-			}while(opc != 5);
-			
-			PreparedStatement psActualizar = conexion.prepareStatement("UPDATE tabla SET nombre = '" +
-					nombre + "', tipo = '" + tipo + "' WHERE id = 5");
-					int resultadoActualizar = psActualizar.executeUpdate();
+			} while (opc != 5);
 
-			
+			PreparedStatement psActualizar = conexion.prepareStatement("UPDATE animal SET nombre = '" + nombre
+					+ "', tipo = '" + tipo + "', color = '" + color + "', edad = '" + edad + "' WHERE id = " + id);
+			int resultadoActualizar = psActualizar.executeUpdate();
+
 			// Close
 			rs.close();
 			s.close();
