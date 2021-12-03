@@ -86,8 +86,7 @@ public class Llibre {
 	// Metodos
 	@Override
 	public String toString() {
-		return "Llibre [id=" + id + ", titol=" + titol + ", autor=" + autor + ", anyNaiximent=" + anyNaiximent
-				+ ", anyPublicacio=" + anyPublicacio + ", editorial=" + editorial + ", nombrePagines=" + nombrePagines
-				+ "]";
+		return " Titol: " + titol + "\n Autor: " + autor + "\n Any de Naiximent: " + anyNaiximent
+				+ "\n Any de Publicacio: " + anyPublicacio + "\n Editorial: " + editorial + "\n Nombre de Pagines: " + nombrePagines;
 	}
 }

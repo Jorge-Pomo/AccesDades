@@ -1,5 +1,6 @@
 package App;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,9 +8,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.internal.build.AllowSysOut;
 import org.hibernate.service.ServiceRegistry;
 
-public class Principal {
+public class Principal implements Serializable{
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -21,17 +23,45 @@ public class Principal {
 		System.out.println("5.- Esborrar un llibre a partir del seu id.");
 		int opc = Integer.parseInt(sc.nextLine());
 
+		ArrayList<Llibre> llistaLlibres = guardarLlibres();
+		
 		switch (opc) {
 		case 1:
-			mostrarLlibres();
+			mostrarTitol(llistaLlibres);
 			break;
 
+		case 2:
+			System.out.println("Dime el ID del llibre que vols vore: ");
+			int id = Integer.parseInt(sc.nextLine());
+			mostrarContingutLlibre(llistaLlibres.get(id));
+			break;
+		case 3:
+			String[] datos = new String[6];
+			System.out.println("+---Creant un Llibre nou---+");
+			System.out.println("Dime el titol:");
+			datos[0] = sc.nextLine();
+			System.out.println("Dime el autor:");
+			datos[1] = sc.nextLine();
+			System.out.println("Dime el any de naiximent:");
+			datos[2] = sc.nextLine();
+			System.out.println("Dime el any de publicacio:");
+			datos[3] = sc.nextLine();
+			System.out.println("Dime la editorial:");
+			datos[4] = sc.nextLine();
+			System.out.println("Dime el nombre de pagines:");
+			datos[5] = sc.nextLine();
+			
+			pujarLlibre(datos);
+			break;
+		case 4:
+			actLlibre();
 		default:
 			break;
 		}
 	}
 
-	public static void mostrarLlibres() {
+	// guardarLlibres()
+	public static ArrayList<Llibre> guardarLlibres(){
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Llibre.class);
 		ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
@@ -42,12 +72,46 @@ public class Principal {
 		session.beginTransaction();
 		
 		// Recuperar llista d’objectes
-		ArrayList listaAnimales = new ArrayList();
-		listaAnimales = (ArrayList) session.createQuery("From Llibre").list();
+		ArrayList<Llibre> llistaLlibres = new ArrayList();
+		llistaLlibres = (ArrayList) session.createQuery("From Llibre").list();
 		
-		for (int i = 0; i < listaAnimales.size(); i++) {
-			System.out.println(listaAnimales.get(i).toString());
+		session.getTransaction().commit();
+		session.close();
+		
+		return llistaLlibres;
+	}
+	
+	// mostrarTitol()
+	public static void mostrarTitol(ArrayList<Llibre> llistaTitols) {
+		for (int i = 0; i < llistaTitols.size(); i++) {
+			System.out.println((llistaTitols.get(i)).getTitol());
 		}
 	}
+	
+	// mostrarContingut()
+	public static void mostrarContingutLlibre(Llibre llibre) {
+		System.out.println(llibre.toString());
+	}
 
+	// pujarLlibre()
+	public static void pujarLlibre(String[] datos) {
+		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+		configuration.addClass(Llibre.class);
+		ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
+				.build();
+		SessionFactory sessionFactory = configuration.buildSessionFactory(registry);
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		Llibre llib = new Llibre(datos[0], datos[1], datos[2], datos[3], datos[4], datos[5]);
+		Serializable id = session.save(llib);
+		
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	public static void actLlibre() {
+		
+	}
 }
