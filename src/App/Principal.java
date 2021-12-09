@@ -13,8 +13,9 @@ import org.hibernate.service.ServiceRegistry;
 
 public class Principal implements Serializable{
 
+	static Scanner sc = new Scanner(System.in);
+	
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
 		System.out.println("+---Menu---+");
 		System.out.println("1.- Mostra tots els títols de la biblioteca.");
 		System.out.println("2.- Mostra la informació detallada d'un llibre a partir del seu id.");
@@ -55,6 +56,9 @@ public class Principal implements Serializable{
 			break;
 		case 4:
 			actLlibre();
+			break;
+		case 5:
+			borrarLlibre();
 		default:
 			break;
 		}
@@ -111,7 +115,96 @@ public class Principal implements Serializable{
 		session.close();
 	}
 	
+	//actLlibre()
 	public static void actLlibre() {
+		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+		configuration.addClass(Llibre.class);
+		ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
+				.build();
+		SessionFactory sessionFactory = configuration.buildSessionFactory(registry);
 		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		System.out.println("Dime l'ID del camp a actualitzar?");
+		int ID = Integer.parseInt(sc.nextLine());
+		Llibre llibre = (Llibre) session.load(Llibre.class, ID);
+		
+		int opc = 0;
+		// Menu
+		do {
+		System.out.println("1.- Titol");
+		System.out.println("2.- Autor");
+		System.out.println("3.- Any de naiximent");
+		System.out.println("4.- Any de publicació");
+		System.out.println("5.- Editorial");
+		System.out.println("6.- Nombre de pagines");
+		System.out.println("7.- Ixir");
+		opc = Integer.parseInt(sc.nextLine());
+		
+		switch (opc) {
+		case 1:
+			System.out.println("Dime Titol:");
+			String titol = sc.nextLine();
+			llibre.setTitol(titol);
+			break;
+		case 2:
+			System.out.println("Dime Autor: ");
+			String autor = sc.nextLine();
+			llibre.setAutor(autor);
+			break;
+		case 3:
+			System.out.println("Dime el any de naiximent: ");
+			String anyNaiximent = sc.nextLine();
+			llibre.setAnyNaiximent(anyNaiximent);
+			break;
+		case 4:
+			System.out.println("Dime el any de publicació:");
+			String anyPubli = sc.nextLine();
+			llibre.setAnyPublicacio(anyPubli);
+			break;
+		case 5:
+			System.out.println("Dime la editorial:");
+			String editorial = sc.nextLine();
+			llibre.setEditorial(editorial);
+			break;
+		case 6:
+			System.out.println("Dime el nombre de pagines:");
+			String nPag = sc.nextLine();
+			llibre.setNombrePagines(nPag);
+			break;
+		default:
+			break;
+		}
+		}while(opc != 7);
+		
+		// Actualitzar llibre
+		session.update(llibre);
+
+		session.getTransaction().commit();
+		session.close();
+	}
+	
+	//borrarLlibre()
+	public static void borrarLlibre() {
+		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
+		configuration.addClass(Llibre.class);
+		ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
+				.build();
+		SessionFactory sessionFactory = configuration.buildSessionFactory(registry);
+		
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		
+		System.out.println("Dime l'ID del camp a borrar:");
+		int ID = Integer.parseInt(sc.nextLine());
+		
+		//Borrar
+		Llibre llibre = new Llibre();
+		llibre.setId(ID);
+		session.delete(llibre);
+		
+		session.getTransaction().commit();
+		session.close();
 	}
 }
