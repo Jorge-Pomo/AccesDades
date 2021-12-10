@@ -15,7 +15,10 @@ public class Principal implements Serializable{
 
 	static Scanner sc = new Scanner(System.in);
 	
+	// main(String[]) 
+	// contiene Menu
 	public static void main(String[] args) {
+		// Menu
 		System.out.println("+---Menu---+");
 		System.out.println("1.- Mostra tots els títols de la biblioteca.");
 		System.out.println("2.- Mostra la informació detallada d'un llibre a partir del seu id.");
@@ -65,6 +68,8 @@ public class Principal implements Serializable{
 	}
 
 	// guardarLlibres()
+	// Parametros entrada: res
+	// Parametros eixida: ArayList d'objecte Llibre que conte cada llibre de la BBDD
 	public static ArrayList<Llibre> guardarLlibres(){
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Llibre.class);
@@ -85,19 +90,28 @@ public class Principal implements Serializable{
 		return llistaLlibres;
 	}
 	
-	// mostrarTitol()
+	// mostrarTitol(ArrayList<Llibre>)
+	// Parametres entrada: ArrayList d'objecte Llibre que conte tots els llibres de la BBDD
+	// Parametres eixida: res
+	// Mostra per pantalla el titol de tots els llibres de la BBDD
 	public static void mostrarTitol(ArrayList<Llibre> llistaTitols) {
 		for (int i = 0; i < llistaTitols.size(); i++) {
 			System.out.println((llistaTitols.get(i)).getTitol());
 		}
 	}
 	
-	// mostrarContingut()
+	// mostrarContingut(Llibre)
+	// Parametres entrada: Un objecte Llibre
+	// Parametres eixida: res
+	// Mostra tots els atributs del llibre
 	public static void mostrarContingutLlibre(Llibre llibre) {
 		System.out.println(llibre.toString());
 	}
 
-	// pujarLlibre()
+	// pujarLlibre(String[])
+	// Parametres entrada: Array de Strings amb les dades necessaries per a crear un llibre nou
+	// Parametres eixida: res
+	// Crea un Objecte(LLibre) nou i el el puja a la BBDD
 	public static void pujarLlibre(String[] datos) {
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Llibre.class);
@@ -115,7 +129,10 @@ public class Principal implements Serializable{
 		session.close();
 	}
 	
-	//actLlibre()
+	// actLlibre()
+	// Parametres entrada: res
+	// Parametres eixida: res
+	// Actualitza les dades d'un Objecte llibre i les puja a la BBDD a partir del seu ID
 	public static void actLlibre() {
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Llibre.class);
@@ -185,7 +202,10 @@ public class Principal implements Serializable{
 		session.close();
 	}
 	
-	//borrarLlibre()
+	// borrarLlibre()
+	// Parametres entrada: res
+	// Parametres eixida: res
+	// Borra un llibre a partir del seu ID
 	public static void borrarLlibre() {
 		Configuration configuration = new Configuration().configure("hibernate.cfg.xml");
 		configuration.addClass(Llibre.class);
@@ -205,6 +225,7 @@ public class Principal implements Serializable{
 		session.delete(llibre);
 		
 		session.getTransaction().commit();
+		session.clear();
 		session.close();
 	}
 }
