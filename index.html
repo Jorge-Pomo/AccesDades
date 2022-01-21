@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulari</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+   <!-- Formulari -->
+    <div class="formulari">
+       
+        <h1>Bobs Burger Characters</h1>
+        
+        <label for="">Escriu l'id del caracter:</label>
+        <input type="text" id="strBusquedaGrupo">
+        <p>Si no escrius res, te mostrara tots els caracters</p>
+                
+        <button onclick="getGroupInfo()" id="boto1">Enviar</button>
+        
+    </div>
+    
+    <!-- Resultat de la consulta a la API -->
+    <div class="resultat">
+        <h2>Resultat Consulta</h2>
+        
+        <div class="resu">
+            <label for=""> Nom del caracter: </label>
+            <input type="text" id="nom">
+        </div>
+        <div class="resu">
+            <label for=""> Genere: </label>
+            <input type="text" id="genere">
+        </div>
+        <div class="resu"> 
+            <label for="">Rol:</label> 
+            <input type="text" id="rol">
+        </div>
+        <div class="resu">
+            <img src="" alt="Imagen del personaje" id="img">
+        </div>
+    </div>
+
+    <script>
+        function polsarBoto() {
+            return alert("Boto polsat");
+        }
+    </script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function getGroupInfo() {
+            var strBusquedaGrupo = document.getElementById('strBusquedaGrupo').value;
+            alert("https://bobsburgers-api.herokuapp.com/" + strBusquedaGrupo);
+            axios.get("https://bobsburgers-api.herokuapp.com/" + strBusquedaGrupo)
+                .then(response => { 
+                console.log(response.data); })
+                .catch(error => { console.error(error); });
+        }
+    </script>
+</body></html>
