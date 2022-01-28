@@ -1,5 +1,23 @@
+body{
+    margin: 10%;
+}
 
-h2{
+
+h1{
+    padding-top: 30px;
+}
+
+header{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+main{
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.centrarText{
     text-align: center;
 }
 
@@ -16,4 +34,15 @@ h2{
 
 .resu{
     margin: 2%;
+}
+
+.portada{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+}
+
+footer{
+    position: absolute;
 }

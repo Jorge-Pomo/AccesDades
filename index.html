@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Formulari</title>
+
     <link rel="stylesheet" href="./css/index.css">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Icons -->
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
 </head>
 
 <body>
-   <!-- Formulari -->
-    <div class="formulari">
-       
-        <h1>Bobs Burger Characters</h1>
-        
-        <label for="">Escriu l'id del caracter:</label>
-        <input type="text" id="strBusquedaGrupo">
-        <p>Si no escrius res, te mostrara tots els caracters</p>
-                
-        <button onclick="getGroupInfo()" id="boto1">Enviar</button>
-        
-    </div>
-    
-    <!-- Resultat de la consulta a la API -->
-    <div class="resultat">
-        <h2>Resultat Consulta</h2>
-        
-        <div class="resu">
-            <label for=""> Nom del caracter: </label>
-            <input type="text" id="nom">
-        </div>
-        <div class="resu">
-            <label for=""> Genere: </label>
-            <input type="text" id="genere">
-        </div>
-        <div class="resu"> 
-            <label for="">Rol:</label> 
-            <input type="text" id="rol">
-        </div>
-        <div class="resu">
-            <img src="" alt="Imagen del personaje" id="img">
-        </div>
-    </div>
+    <header class="centrarText">
+        <h1 class="centrarText">Bobs Burger Characters</h1>
+        <p>Polsa el boto per cerregar tots els personatges</p>
+        <button type="button" class="btn btn-success fas fa-search" name="mostrarPersonatges" onclick="getGroupInfo()">Mostrar personatges</button>
+    </header>
+    <main>
+        <table class="table table-striped table-hover shadow-sm p-3 mb-5 bg-body rounded" id="tablaPersonatges">
+            <thead>
+                <th>#</th>
+                <th rowspan="2">Nom</th>
+            </thead>
+            <tbody id="cos">
+                <tr></tr>
+            </tbody>
+        </table>
+    </main>
 
+    <!-- Script JavaScript -->
     <script>
         function polsarBoto() {
             return alert("Boto polsat");
         }
+
     </script>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <script>
         function getGroupInfo() {
-            var strBusquedaGrupo = document.getElementById('strBusquedaGrupo').value;
-            alert("https://bobsburgers-api.herokuapp.com/" + strBusquedaGrupo);
-            axios.get("https://bobsburgers-api.herokuapp.com/" + strBusquedaGrupo)
-                .then(response => { 
-                console.log(response.data); })
-                .catch(error => { console.error(error); });
+            var strBusquedaGrupo = document.getElementById('tablaPersonatges').value;
+            axios.get("https://bobsburgers-api.herokuapp.com/characters")
+                .then(response => {
+                    response.data.forEach(function(elemento, indice, array) {
+                        $("#tablaPersonatges tr:last").after("<tr><td>" + indice + "</td> <td>" + elemento.name + "</td> <td> <input type='Submit' class='btn btn-success' value="+indice+" id=" + indice + " onclick='getPersonaje(this)'/> </td></tr>");
+                    })
+                })
+                .catch(error => {
+                    console.error(error);
+                });
         }
+
     </script>
-</body></html>
+
+    <script>
+        jQuery('#form-recherche').submit(getPersonaje());
+        function getPersonaje(e) {
+            console.log(e.value);
+            
+            let personaje = e.value;
+            
+            $.ajax({
+                url: "resuConsula.php",
+                data: {personaje, personaje},
+                type: 'POST',
+                dataType: 'html',
+                success: function(data){
+                 $('#contenido').html(data);
+                }
+            });
+            
+
+            var url = "resuConsula.php?" + personaje;
+            var win = window.open(url, '_blank');
+            win.focus();
+        };
+
+    </script>
+</body>
+
+</html>
