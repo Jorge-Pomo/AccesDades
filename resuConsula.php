@@ -43,7 +43,7 @@
     <script>
         $id = "<?php echo $name; ?>" ;
         
-         
+        // Plenar imputs
         axios.get("https://bobsburgers-api.herokuapp.com/characters/"+$id)
                 .then(response => {
                     console.log(response.data);
@@ -56,6 +56,34 @@
             console.error(error);
         });
     </script>
+    
+    <!-- Enviar al servidor -->
+        <?php
+                $id = "<script>document.getElementById('id').value;</script>";
+                $nombre = "<script>document.getElementById('nom').value;</script>";
+                $sexo = "<script>document.getElementById('sexe').value;</script>";
+                $img = "<script>document.getElementById('img').value;</script>";
+                $servidor = "localhost";
+                $usuario = "root";
+                $password = "";
+                $dbname = "prueba";
+                $conexion = mysqli_connect($servidor, $usuario, $password, $dbname);
+                if (!$conexion) {
+                    
+                    echo "Error en la conexion a MySQL: ".mysqli_connect_error();
+                    exit();
+                }
+                
+                $sql = "INSERT INTO `personatges`(`id`, `nombre`, `sexo`, `img`) VALUES ('". $id ."','". $nombre ."','". $sexo ."','". $img ."')";
+                if (mysqli_query($conexion, $sql)) {
+                    
+                    echo "Registro insertado correctamente.";
+                } else {
+                    
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+                }
+            
+        ?>
     
 </body>
 </html>

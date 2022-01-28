@@ -13,6 +13,7 @@
 
     <!-- Icons -->
     <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+    
 </head>
 
 <body>
@@ -59,22 +60,22 @@
                 });
         }
 
-    </script>
-
-    <script>
         jQuery('#form-recherche').submit(getPersonaje());
         function getPersonaje(e) {
             console.log(e.value);
             
             let personaje = e.value;
             
+            alert(personaje);
+            
             $.ajax({
                 url: "resuConsula.php",
-                data: {personaje, personaje},
+                data: {personaje: personaje},
                 type: 'POST',
-                dataType: 'html',
+                //dataType: 'html',
                 success: function(data){
-                 $('#contenido').html(data);
+                 //$('#contenido').html(data);
+                    alert("enviado");
                 }
             });
             
