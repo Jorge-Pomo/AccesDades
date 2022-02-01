@@ -1,3 +1,5 @@
+
+   <!-- Pugem les dades al servidor fent servir una consulta amb SQL. -->
 <?php
     $id = $_POST['id'];
     $nom = $_POST['nom'];

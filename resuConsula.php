@@ -39,12 +39,14 @@
             <button type="button" class="btn btn-success" onclick="enviarServidor()">Pujar a la BBDD</button>
         </div>
     </main>
-
+    
+    <!-- Arrepleguem  l'id que em enviat per get a la URL -->
     <?php
         $name = $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
         $name = substr($name, -1);
     ?>
 
+   <!-- AJvaScript -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         $id = "<?php echo $name; ?>";
@@ -64,7 +66,10 @@
 
     </script>
 
-    <!-- Enviar al servidor -->
+    <!-- 
+        Enviem les dades per POST al servidor on les enviarem a la BBDD. 
+    -->
+    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

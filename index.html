@@ -35,18 +35,17 @@
     </main>
 
     <!-- Script JavaScript -->
-    <script>
-        function polsarBoto() {
-            return alert("Boto polsat");
-        }
-
-    </script>
-
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+   
     <script>
+        /** 
+            Creem la taula dinamica a partir de les dades que ens proporciona el Json 
+            El boto de la taula adquirix com a ID l'id del perosnatge, per a poder buscarlo
+            despres en la pestaña de resuConsulta.php
+        **/
         function getGroupInfo() {
             var strBusquedaGrupo = document.getElementById('tablaPersonatges').value;
             axios.get("https://bobsburgers-api.herokuapp.com/characters")
@@ -61,6 +60,7 @@
                 });
         }
 
+        // Al apretar el boto ens redirigeix a una nova pestanya amb el resultat de la consulta
         jQuery('#form-recherche').submit(getPersonaje());
         function getPersonaje(e) {            
             let personaje = e.value;            
